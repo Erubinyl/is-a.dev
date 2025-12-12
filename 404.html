@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en-GB"><head>
+    <title>erubinyl.is-a.dev</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+        html, body             { height: 100%; }
+        main                   { height: calc(82vh - 6rem); padding: 3rem 5vw 3rem 5vw;
+                                 display: flex; flex-direction: column; font-family: "Google Sans", sans-serif; }
+        main > h1              { flex: 0 0 auto; margin: 0px;
+                                 font-size: 5rem; font-weight: 400; }
+        main > p:first-of-type { flex: 1 1 auto; font-family: "Roboto Mono", monospace; }
+        main > p:last-of-type  { flex: 0 0 auto; }
+    </style></head>
+<body>
+    <main>
+        <h1>404 Not found</h1>
+        <p id="report">
+            Hmmm... Looks like whatever you typed into the Address bar did not lead up to anything in my search!
+        </p>
+        <p>
+            Hey uhm... pwease don't twy to cwick any of the hypewwinks in the footew... it's still under constwucsion... 
+        </p>
+    </main>
+    <script>
+        fetch("https://raw.githubusercontent.com/Erubinyl/is-a.dev/resources/stylesheets/base.required.css")
+            .then(resource => resource.text()).then(textContent => document.head.appendChild(Object.assign(document.createElement("style"), { textContent: textContent })))
+            .catch(_ => console.error("Unable to load base.required.css", _));
+        fetch("https://raw.githubusercontent.com/Erubinyl/is-a.dev/resources/components/footer/footer.html")
+            .then(resource => resource.text()).then(content =>
+                document.body.appendChild(iframe = Object.assign(document.createElement("iframe"), { srcdoc: content, sandbox: "allow-scripts", className: "use-component-footer", frameBorder: "0" }))
+                .onload = () => fetch("https://raw.githubusercontent.com/Erubinyl/is-a.dev/resources/components/footer/define.css").then(resource => resource.text()).then(textContent => document.head.appendChild(Object.assign(document.createElement("style"), { textContent: textContent })))).catch(_ => console.error("Unable to load <iframe>'s CSS", _))
+            .catch(_ => console.error("Unable to load <iframe>'s HTML", _));
+
+        document.addEventListener("DOMContentLoaded", () => { document.getElementById("report").textContent = window.location.pathname + window.location.search + window.location.hash || "/" });
+    </script>
+</body>
+</html>

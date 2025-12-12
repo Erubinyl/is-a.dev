@@ -14,7 +14,7 @@
 <body>
     <p>Did it work?</p>
     <script>
-        fetch("https://raw.githubusercontent.com/Erubinyl/is-a.dev/primary/resources/components/heart.html")
+        fetch("https://raw.githubusercontent.com/Erubinyl/is-a.dev/resources/components/footer/footer.html")
             .then(resource => resource.text()).then(content =>
                 document.body.appendChild(iframe = Object.assign(document.createElement("iframe"), { srcdoc: content, sandbox: "allow-scripts", className: "iframe-fullscreen" }))
                 .onload = () => iframe.contentDocument.querySelectorAll("style").forEach(style => document.head.appendChild(Object.assign(document.createElement("style"), { textContent: style.textContent }))))
